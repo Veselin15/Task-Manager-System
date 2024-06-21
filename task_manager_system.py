@@ -14,6 +14,9 @@ def add_task(tasks, task):
     list of dict: Updated list of tasks.
     """
 
+    new_task = {"task": task}
+    tasks.append(new_task)
+    return tasks
 
 def remove_task(tasks, task_id):
     """
@@ -26,7 +29,11 @@ def remove_task(tasks, task_id):
     Returns:
     list of dict: Updated list of tasks.
     """
-
+    for task in tasks:
+        if task.get("task", {}).get("id") == task_id:
+            tasks.remove(task)
+            return tasks
+    return tasks
 
 def update_task(tasks, task_id, updated_task):
     """
