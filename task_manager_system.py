@@ -12,7 +12,6 @@ def add_task(tasks, task):
 
     Returns:
     list of dict: Updated list of tasks.
-
     """
 
     new_task = {"task": task}
