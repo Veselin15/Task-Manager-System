@@ -65,7 +65,11 @@ def get_task(tasks, task_id):
     Returns:
     dict: The task with the specified ID, or None if not found.
     """
+    for task in tasks:
+        if task.get("task", {}).get("id") == task_id:
 
+            return task
+    return task
 
 def set_task_priority(tasks, task_id, priority):
     """
@@ -333,7 +337,12 @@ def main():
         elif choice == '4':
             task_id = int(input("Enter task ID to get: "))
             task = get_task(tasks, task_id)
-            print("Task details:", task)
+            print("Task details:")
+            for x in task:
+                print(x)
+                for y in task[x]:
+                    print(y, ':', task[x][y])
+
         elif choice == '5':
             task_id = int(input("Enter task ID to set priority: "))
             priority = input("Enter new priority (low, medium, high): ")
