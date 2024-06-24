@@ -47,7 +47,12 @@ def update_task(tasks, task_id, updated_task):
     Returns:
     list of dict: Updated list of tasks.
     """
-
+    for task in tasks:
+        if task.get("task", {}).get("id") == task_id:
+            tasks.remove(task)
+            tasks.append(updated_task)
+            return updated_task
+    return tasks
 
 def get_task(tasks, task_id):
     """
